@@ -3,7 +3,6 @@ package com.william.springcloud.controller;
 import com.william.springcloud.common.Result;
 import com.william.springcloud.entity.Payment;
 import com.william.springcloud.service.PaymentService;
-import io.micrometer.core.instrument.Meter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +20,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @PostMapping("/payment")
-    public Result<String> save(Payment payment){
+    public Result<String> save(@RequestBody Payment payment){
 
         int result = paymentService.create(payment);
         log.info("*****插入数据：{}",result);
